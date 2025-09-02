@@ -18,3 +18,13 @@ This project is a **QA Automation practice with Cypress v15.0.0** using the [Sau
    ```bash
    git clone https://github.com/berdevel/cypress-project-automation-e2e.git
    cd cypress-project-automation-e2e
+
+2. Install dependencies:
+    npm install
+
+3. Run Cypress in interactive mode:
+    npx cypress open
+
+4. Or run the tests in headless mode:
+    npx cypress run
+
