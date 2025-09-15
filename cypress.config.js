@@ -1,13 +1,8 @@
 const { defineConfig } = require("cypress");
+//import { allureCypress } from "allure-cypress/reporter";
 
 module.exports = defineConfig({
-  e2e: {
-    baseUrl: 'https://www.saucedemo.com/?utm_source=chatgpt.com',
-    setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on);
-    },
-  },
-  video: true,
+
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
     ignoreVideos: true,
@@ -16,5 +11,17 @@ module.exports = defineConfig({
     embeddedScreenshots: true,
     inlineAssets: true,
     saveAllAttempts: false,
+    saveJson: true,
   },
+  e2e: {
+    baseUrl: 'https://www.saucedemo.com/?utm_source=chatgpt.com',
+    setupNodeEvents(on, config) {
+      require('cypress-mochawesome-reporter/plugin')(on);
+      //allureCypress(on, config, {
+        //resultsDir: "allure-results",
+      //})
+      //return config
+    },
+  },
+  video: true
 });
