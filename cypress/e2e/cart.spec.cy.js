@@ -9,42 +9,21 @@ describe('example test inventory with cypress v15.0.0 on saucedemo', () => {
     cy.get('#login-button').click()
   })
 
-  it('should inventory list exist', ()=>{
-    //inventory list
-    cy.get('.inventory_list').should('exist').screenshot()
-
+  it('add products to cart', ()=>{
+    //add two products to cart
+    cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
+    cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click()
   })
 
- it('count inventory items', () => {
-    //count inventory items
-    cy.get('.inventory_item').should('have.length', 6)
-
+ it('verify cart badge count', () => {
+    //verify cart badge count
+    cy.get('.shopping_cart_badge').should('have.text', '2')
   })
   
-  it('validate product names, price and buttons', () =>{
-    //validate names and prices
-    cy.get('.inventory_item').each(($el, index, $list) => {
-    // Validate product names
-    cy.wrap($el).find('.inventory_item_name').invoke('text').should('not.be.empty');
-
-    // Validate product prices
-    cy.wrap($el).find('.inventory_item_price').invoke('text').should('match', /^\$\d+\.\d{2}$/);
-
-    // You can also assert against specific product details if you have them in an array
-    // For example:
-    // const expectedNames = ['Sauce Labs Backpack', 'Sauce Labs Bike Light', 'Sauce Labs Bolt T-Shirt'];
-    // cy.wrap($el).find('.inventory_item_name').invoke('text').should('eq', expectedNames[index]);
-    });
-
-    //validate buttons
-    cy.get('.btn_inventory').each(($el) => {
-      // Assert that the button exists and is visible
-      cy.wrap($el).should('be.visible');
-
-      // Assert that the button has the correct text
-      cy.wrap($el).should('have.text', 'Add to cart');
-    });
-
+  it('remove products from cart', () =>{
+    //remove products from cart
+    cy.get('.cart_list').contains('Sauce Labs Backpack').siblings('.item_info_container').find('.cart_button').click();
+    cy.get('.cart_list').should('not.contain', 'Sauce Labs Backpack');
   })
 
 })

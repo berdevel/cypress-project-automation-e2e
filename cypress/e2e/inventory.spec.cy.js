@@ -17,7 +17,6 @@ describe('example test inventory with cypress v15.0.0 on saucedemo', () => {
  it('count inventory items', () => {
     //count inventory items
     cy.get('.inventory_item').should('have.length', 6)
-
   })
   
   it('validate product names, price and buttons', () =>{
@@ -43,7 +42,6 @@ describe('example test inventory with cypress v15.0.0 on saucedemo', () => {
       // Assert that the button has the correct text
       cy.wrap($el).should('have.text', 'Add to cart');
     });
-
   })
 
 })

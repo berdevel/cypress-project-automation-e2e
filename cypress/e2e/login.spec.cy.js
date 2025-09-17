@@ -17,7 +17,6 @@ describe('example test login with cypress v15.0.0 on saucedemo', () => {
     cy.get('#user-name').should('have.attr', 'placeholder', 'Username').screenshot("login-005-username-placeholder-is-correct")
     cy.get('#password').should('have.attr', 'placeholder', 'Password').screenshot("login-006-password-placeholder-is-correct")
     cy.get('#login-button').should('have.value', 'Login').screenshot("login-007-loginbutton-text-is-correct")
-
   })
 
   it('should login successfully with valid credentials', () => {

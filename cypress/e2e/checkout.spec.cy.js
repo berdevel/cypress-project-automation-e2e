@@ -9,42 +9,26 @@ describe('example test inventory with cypress v15.0.0 on saucedemo', () => {
     cy.get('#login-button').click()
   })
 
-  it('should inventory list exist', ()=>{
+  it('Fill Checkout Form', ()=>{
     //inventory list
-    cy.get('.inventory_list').should('exist').screenshot()
+    cy.get('[data-test="firstName"]').type('John');
+    cy.get('[data-test="lastName"]').type('Doe');
+    cy.get('[data-test="postalCode"]').type('90210');
+    cy.get('[data-test="continue"]').click();
 
   })
 
- it('count inventory items', () => {
+ it('Validate Order Summary', () => {
     //count inventory items
-    cy.get('.inventory_item').should('have.length', 6)
+    cy.get('.cart_item_label').should('contain', 'Sauce Labs Backpack');
+    cy.get('.cart_item_label').should('contain', 'Sauce Labs Bike Light');
+    cy.get('.summary_subtotal_label').should('contain', 'Total: $42.00'); // Example value
 
   })
   
-  it('validate product names, price and buttons', () =>{
-    //validate names and prices
-    cy.get('.inventory_item').each(($el, index, $list) => {
-    // Validate product names
-    cy.wrap($el).find('.inventory_item_name').invoke('text').should('not.be.empty');
-
-    // Validate product prices
-    cy.wrap($el).find('.inventory_item_price').invoke('text').should('match', /^\$\d+\.\d{2}$/);
-
-    // You can also assert against specific product details if you have them in an array
-    // For example:
-    // const expectedNames = ['Sauce Labs Backpack', 'Sauce Labs Bike Light', 'Sauce Labs Bolt T-Shirt'];
-    // cy.wrap($el).find('.inventory_item_name').invoke('text').should('eq', expectedNames[index]);
-    });
-
-    //validate buttons
-    cy.get('.btn_inventory').each(($el) => {
-      // Assert that the button exists and is visible
-      cy.wrap($el).should('be.visible');
-
-      // Assert that the button has the correct text
-      cy.wrap($el).should('have.text', 'Add to cart');
-    });
-
+  it('Complete Purchase and Check Confirmation Message', () =>{
+    cy.get('[data-test="finish"]').click();
+    cy.get('.complete-header').should('have.text', 'Thank you for your order!');
   })
 
 })
