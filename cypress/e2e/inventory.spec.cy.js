@@ -12,7 +12,6 @@ describe('example test inventory with cypress v15.0.0 on saucedemo', () => {
   it('should inventory list exist', ()=>{
     //inventory list
     cy.get('.inventory_list').should('exist').screenshot()
-
   })
 
  it('count inventory items', () => {
