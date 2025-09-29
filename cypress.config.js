@@ -16,12 +16,12 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: 'https://www.saucedemo.com/?utm_source=chatgpt.com',
     setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on);
+      //require('cypress-mochawesome-reporter/plugin')(on);
       //allureCypress(on, config, {
         //resultsDir: "allure-results",
       //})
       //return config
     },
   },
-  video: true
+  video: false
 });

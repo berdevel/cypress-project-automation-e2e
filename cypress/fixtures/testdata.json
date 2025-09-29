@@ -2,5 +2,21 @@
   "valid-username": "standard_user",
   "valid-password": "secret_sauce",
   "invalid-username": "username",
-  "invalid-password": "password"
+  "invalid-password": "password",
+  "expectedNames": [
+    "Sauce Labs Backpack",
+    "Sauce Labs Bike Light",
+    "Sauce Labs Bolt T-Shirt",
+    "Sauce Labs Fleece Jacket",
+    "Sauce Labs Onesie",
+    "Test.allTheThings() T-Shirt (Red)"
+  ],
+  "expectedPrices": [
+    "$29.99", 
+    "$9.99", 
+    "$15.99", 
+    "$49.99", 
+    "$7.99", 
+    "$15.99"
+  ]
 }

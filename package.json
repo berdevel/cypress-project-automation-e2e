@@ -7,6 +7,9 @@
     "cypress-mochawesome-reporter": "^4.0.2"
   },
   "scripts": {
-    "e2e:chrome": "cypress run --browser chrome"
+    "e2e:electron": "cypress run",
+    "e2e:chrome": "cypress run --browser chrome",
+    "e2e:firefox": "cypress run --browser firefox",
+    "e2e:edge": "cypress run --browser edge"
   }
 }
