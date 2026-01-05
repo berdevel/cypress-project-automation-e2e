@@ -16,7 +16,11 @@ describe('example test inventory with cypress v15.0.0 on saucedemo', () => {
 
  it('count inventory items', () => {
     //count inventory items
-    cy.get('.inventory_item').should('have.length', 6).screenshot('inventory-002-six-inventory-items')
+    cy.get('.inventory_item').should('have.length', 6)
+    cy.get('.inventory_item').each(($el, index, $list) => {
+      // Screenshot items
+      cy.wrap($el).screenshot('inventory-002-six-inventory-items-'+index)
+    })
   })
   
   it('validate product names, price and buttons', () =>{
